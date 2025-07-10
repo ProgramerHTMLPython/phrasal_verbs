@@ -3,52 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <title>Selector de Phrasal Verbs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #FF00CD, #1A2066);
       font-family: 'KG Red Hands', sans-serif;
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
 
     .container {
-      width: 525px;
-      height: 250px;
-      background: linear-gradient(to bottom, #FF00CD, #1A2066);
+      max-width: 90vw;
+      width: 100%;
+      max-height: 90vh;
       padding: 20px;
-      color: white;
-      position: relative;
-      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     }
 
     .phrasal {
-      margin: 8px 0;
-      font-size: 16px;
+      margin: 10px 0;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
     }
 
     #button {
-      position: absolute;
-      left: 120px;
-      bottom: 20px;
+      margin-top: 20px;
       background-color: black;
       color: white;
       border: none;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 12px 24px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
       cursor: pointer;
       font-family: 'KG Red Hands', sans-serif;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    #button:hover {
+      background-color: #222;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <p class="phrasal" id="p1">Phrasal 1: ?</p>
-  <p class="phrasal" id="p2">Phrasal 2: ?</p>
-  <p class="phrasal" id="p3">Phrasal 3: ?</p>
-  <p class="phrasal" id="p4">Phrasal 4: ?</p>
-  <button id="button" onclick="elegirPhrasals()">Elegir phrasal</button>
-</div>
+    <div class="container">
+    <p class="phrasal" id="p1">Phrasal 1: ?</p>
+    <p class="phrasal" id="p2">Phrasal 2: ?</p>
+    <p class="phrasal" id="p3">Phrasal 3: ?</p>
+    <p class="phrasal" id="p4">Phrasal 4: ?</p>
+    <button id="button" onclick="elegirPhrasals()">Elegir phrasal</button>
+  </div>
 
-<script>
+  <script>
   const phrasal_verbs = [
     "bring up - Mencionar", "call off - Cancelar", "come across - Encontrarse con", "drop by - Pasar a visitar",
     "get along - Llevarse bien", "hold on - Esperar", "pass out - Desmayarse", "put up with - Tolerar",
@@ -98,20 +116,20 @@
     "hang on - Aguantar", "go overboard - Exagerar"
   ];
 
-  function elegirPhrasals() {
-    const seleccionadas = [];
-    while (seleccionadas.length < 4) {
-      const index = Math.floor(Math.random() * phrasal_verbs.length);
-      if (!seleccionadas.includes(phrasal_verbs[index])) {
-        seleccionadas.push(phrasal_verbs[index]);
+    function elegirPhrasals() {
+      const seleccionadas = [];
+      while (seleccionadas.length < 4) {
+        const index = Math.floor(Math.random() * phrasal_verbs.length);
+        if (!seleccionadas.includes(phrasal_verbs[index])) {
+          seleccionadas.push(phrasal_verbs[index]);
+        }
+      }
+
+      for (let i = 0; i < 4; i++) {
+        document.getElementById(`p${i + 1}`).textContent = `Phrasal ${i + 1}: ${seleccionadas[i]}`;
       }
     }
-
-    for (let i = 0; i < 4; i++) {
-      document.getElementById(`p${i + 1}`).textContent = `Phrasal ${i + 1}: ${seleccionadas[i]}`;
-    }
-  }
-</script>
+  </script>
 
 </body>
 </html>
