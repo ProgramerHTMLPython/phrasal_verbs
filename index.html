@@ -63,6 +63,7 @@
     <p class="phrasal" id="p2">Phrasal 2: ?</p>
     <p class="phrasal" id="p3">Phrasal 3: ?</p>
     <p class="phrasal" id="p4">Phrasal 4: ?</p>
+    <p class="phrasal" id="p5">Phrasal 5: ?</p>
     <button id="button" onclick="elegirPhrasals()">Elegir phrasal</button>
   </div>
 
@@ -118,14 +119,14 @@
 
     function elegirPhrasals() {
       const seleccionadas = [];
-      while (seleccionadas.length < 4) {
+      while (seleccionadas.length < 5) {
         const index = Math.floor(Math.random() * phrasal_verbs.length);
         if (!seleccionadas.includes(phrasal_verbs[index])) {
           seleccionadas.push(phrasal_verbs[index]);
         }
       }
 
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 5; i++) {
         document.getElementById(`p${i + 1}`).textContent = `Phrasal ${i + 1}: ${seleccionadas[i]}`;
       }
     }
